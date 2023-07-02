@@ -14,8 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from whey import views
+from rest_framework.urlpatterns import format_suffix_patterns
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('whey/', views.whey_list),
+    path('whey/<int:id>', views.whey_detail)
+    
 ]
+
+urlpatterns= format_suffix_patterns(urlpatterns)
